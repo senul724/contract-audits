@@ -1,0 +1,353 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "fee",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "org_",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "governer_",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fee",
+						"type": "uint256"
+					}
+				],
+				"name": "nativeContribution",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fee",
+						"type": "uint256"
+					}
+				],
+				"name": "tokenContribution",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newGoverner",
+						"type": "address"
+					}
+				],
+				"name": "changeGoverner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOrg",
+						"type": "address"
+					}
+				],
+				"name": "changeOrg",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "feeFactor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getTime",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "org",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "receiveNativeFunds",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "receiver",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "receiveTokenFunds",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Examiner is a contract which facilitate effective contribution collection with blockchain tech. Functionality of the contract is to recieve contributions, validate the transactions, deduct the fee and transfer the funds to the specific reciever. The contributions are sent to an event's receiving address where the event id and the  receiving address are sent as arguments. Also the transaction data is sucured and  validated using EIP712 and replaying is avoided with time expiration. Contributions are accepted through native currency of the network and ERC20 tokens allowed by the organization. Governer address is responsible for changing sensitive information realted to the organization and withdrawing fees.",
+			"kind": "dev",
+			"methods": {
+				"changeGoverner(address)": {
+					"details": "restricted function to change governer address"
+				},
+				"changeOrg(address)": {
+					"details": "restricted function to change organization address"
+				},
+				"getTime()": {
+					"details": "simple function to get block timestamp. Timestamps are used to validate transactions as mentioned above "
+				},
+				"receiveNativeFunds(uint256,address,uint256,bytes)": {
+					"details": "Functions to receive native currency contributions."
+				},
+				"receiveTokenFunds(uint256,uint256,address,address,uint256,bytes)": {
+					"details": "Functions to validate ERC20 contributions."
+				},
+				"withdraw(uint256)": {
+					"details": "All contributions are sent out of the contract immediatly so that only the fee is collected in the contracts. Value to withdraw is passed as and argument and not setting the amount to be contract balance is to avoid any errors due to order of execution "
+				}
+			},
+			"stateVariables": {
+				"feeFactor": {
+					"details": "Method used to calculate the fee When the amount is devided by the fee factor, the quotient will be the fee. example: If the fee is 1%, feeFactor will be 100."
+				},
+				"governer": {
+					"details": "Address of the organization."
+				},
+				"org": {
+					"details": "Address of the organization."
+				},
+				"tokenTypeHash": {
+					"details": "Typehash of the structs to be used in the validation process mentioned above."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Examiner.sol": "Examiner"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xf96f969e24029d43d0df89e59d365f277021dac62b48e1c1e3ebe0acdd7f1ca1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ec772b45a624be516f1c81970caa8a2e144301e9d0921cbc1a2789fef39a1269",
+				"dweb:/ipfs/QmNyjwxCrGhQMyzLD93oUobJXVe9ceJvRvfXwbEtuxPiEj"
+			]
+		},
+		"Examiner.sol": {
+			"keccak256": "0xcc23f952fab25832f106f73fce112daed20d3760eca2dd933546e2ddfda54198",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a4f9f41ec37343cb0c6e96056473cccd96e5e437181b224f4df1fac5e9598110",
+				"dweb:/ipfs/QmcaSSs8eb5EefWBzurx3WRD7rhtS22RjXyovUhvQ4GSVW"
+			]
+		},
+		"interfaces/IERC20.sol": {
+			"keccak256": "0x79712dcb4946b6b6d7ae6186dc5b9ff8bfb8efc0671d742b0b67fe0a975e3376",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f1211dd623774c0d16a4199b873a005a72f37ae6a8439a3745339c50a3be9e6b",
+				"dweb:/ipfs/QmbYGbvqEvQQKnxCEeGcWBuqrXzDoCKS1ogmdFXe8knAmR"
+			]
+		},
+		"openzeppalin-utils/ECDSA.sol": {
+			"keccak256": "0x70baefdda9b11b1b7a0f166d98ed1f80307a4140d259c6ef4ac58ac70cd21ed1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5824e122b22e8d2c25c2e0b3f52c2235456cd00f4c2fbc1d429d0ef97ed62ab4",
+				"dweb:/ipfs/QmNPBDvBA8qETGFtTbcvvGH5bm2Hen6YxKX8CTUshAgs8E"
+			]
+		},
+		"openzeppalin-utils/EIP712.sol": {
+			"keccak256": "0x852987c093178595e02298b72a5f3c09aee541604b9e24a3a550bc63d92f3a22",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9b51f6bbe233c5ad5aa9dd2d09e1dc2f7e5b7a8007ad6d0a1c4cdd8e913d157",
+				"dweb:/ipfs/QmNZz3XegYagUgKBPBNeMuPZQNwmYd6j7GbwTFU1T6ZsD2"
+			]
+		},
+		"openzeppalin-utils/SafeERC20.sol": {
+			"keccak256": "0x99bfc9740661db48b754e3b00139f4dc2e1dcd3a90c1b4753b4049de03cd4a53",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8c13109aa067b0649f47a4e707e09c0088998c764ccc481b50da553bf2e64c40",
+				"dweb:/ipfs/QmPgoR8JYSQvNao7DAbPZ2vZ44LCmEGKRqDL8G3Bx7TV3t"
+			]
+		}
+	},
+	"version": 1
+}

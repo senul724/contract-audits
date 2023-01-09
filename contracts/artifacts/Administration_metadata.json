@@ -1,0 +1,874 @@
+{
+	"compiler": {
+		"version": "0.8.17+commit.8df45f5f"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "feeFactor_",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "org_",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "governer_",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "time",
+						"type": "uint256"
+					}
+				],
+				"name": "EventClosed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "netId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "receiver",
+								"type": "address"
+							}
+						],
+						"indexed": false,
+						"internalType": "struct Administration.ChainData[]",
+						"name": "data",
+						"type": "tuple[]"
+					}
+				],
+				"name": "EventCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "exOwner",
+						"type": "address"
+					}
+				],
+				"name": "EventTransfered",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "collection",
+						"type": "address"
+					}
+				],
+				"name": "NFTMinted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newReceiver",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "network",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "ReceiverChanged",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "factoryAddress",
+						"type": "address"
+					}
+				],
+				"name": "addCollectionFactory",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "netId",
+						"type": "uint256"
+					}
+				],
+				"name": "addNetwork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "collectionAddress",
+						"type": "address"
+					}
+				],
+				"name": "addPublicCollectionAddress",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newFeeFactor",
+						"type": "uint256"
+					}
+				],
+				"name": "changeFeeFactor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newGoverner",
+						"type": "address"
+					}
+				],
+				"name": "changeGoverner",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOrg",
+						"type": "address"
+					}
+				],
+				"name": "changeOrg",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newReceiver",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "cause",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "chainId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "caller",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "changeReceiver",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "cause",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "caller",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					},
+					{
+						"internalType": "address",
+						"name": "nftContract",
+						"type": "address"
+					}
+				],
+				"name": "close",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "closed",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "eventOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "symbol",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "uri",
+						"type": "string"
+					}
+				],
+				"name": "createCustomCollection",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "netId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "receiver",
+								"type": "address"
+							}
+						],
+						"internalType": "struct Administration.ChainData[]",
+						"name": "chainData",
+						"type": "tuple[]"
+					}
+				],
+				"name": "createEvent",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "customCollections",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "eventCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "factory",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "feeFactor",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "metadataUri",
+						"type": "string"
+					}
+				],
+				"name": "joinPublicCollection",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "mintCustom",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "contributor",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					}
+				],
+				"name": "mintPublic",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "networkAdmins",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "org",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "owners",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "publicCollectionAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netId",
+						"type": "uint256"
+					}
+				],
+				"name": "recordNativeContribution",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "netId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "token",
+						"type": "address"
+					}
+				],
+				"name": "recordTokenContribution",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "cause",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "caller",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "eventId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "nonce",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "signature",
+						"type": "bytes"
+					}
+				],
+				"name": "transferAuthority",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Contract manages event information throught out all supoorted network. Contract deploys a network admin didicated to each network adn stores the network specific data on the network admin contracts. Contract also manages all the admin functions that mainly includes manipulating sensitive data of an event such as the receiving address by the user. All admin interactions require the event owner to sign required data and call the contract through the orgnaizations private key to enable gassless transactions. Contract also records all the contributions received and realted fees. Last and the main functionality of the contract is handling NFT rewards that includes intiating new instances, minting and managing ownership through out the lifetime of the event. All the mutations restricted for the Creator is done by the governer.",
+			"kind": "dev",
+			"methods": {
+				"addCollectionFactory(address)": {
+					"details": "Function to add the custom NFT factory address."
+				},
+				"addNetwork(uint256)": {
+					"details": "Adding new network support by deploying a network admin specific to the  new network intended to supoort."
+				},
+				"addPublicCollectionAddress(address)": {
+					"details": "Function to add the public NFT collection address after minting the contract."
+				},
+				"changeFeeFactor(uint256)": {
+					"details": "Funtion for changing the fee factor."
+				},
+				"changeGoverner(address)": {
+					"details": "restricted function to change governer address."
+				},
+				"changeOrg(address)": {
+					"details": "restricted function to change organization address."
+				},
+				"changeReceiver(address,string,uint256,address,uint256,uint256,bytes)": {
+					"details": "Funtion to change the receiver of an event specific to the network."
+				},
+				"close(string,address,uint256,uint256,bytes,address)": {
+					"details": "Function close an event NOTE: ONCE CLOSED AN EVENT CANNOT BE RE-OPENED"
+				},
+				"createCustomCollection(address,uint256,string,string,string)": {
+					"details": "Function mints a new custom NFT collection for event rewards."
+				},
+				"createEvent(address,(uint256,address)[])": {
+					"details": "Events are created by assigning an event id.",
+					"params": {
+						"chainData": "Array of ChainData. Creator must atleast select one supported network to create an event.",
+						"owner": "Address of the event owner. Only owner can manipulate the event data by calling the contract through the organization private key."
+					}
+				},
+				"joinPublicCollection(uint256,string)": {
+					"details": "Funtion initiate event rewards in the public collection."
+				},
+				"mintCustom(address,uint256)": {
+					"details": "Function to mint an NFT on be-half of the contributor from the dedicated collection for the event."
+				},
+				"mintPublic(address,uint256)": {
+					"details": "Funtion to mint an NFT on be-half of the contributor from the public collection for event rewards."
+				},
+				"recordNativeContribution(uint256,uint256,uint256)": {
+					"details": "Recording received native contributions."
+				},
+				"recordTokenContribution(uint256,uint256,uint256,address)": {
+					"details": "Recording received native contributions."
+				},
+				"transferAuthority(address,string,address,uint256,uint256,bytes)": {
+					"details": "Function to transfer ownership of an event"
+				}
+			},
+			"stateVariables": {
+				"adminTypeHash": {
+					"details": "Typehash of the structs to be used in the validation process mentioned above."
+				},
+				"closed": {
+					"details": "Keeps in track of the closed and opened state of an event."
+				},
+				"customCollections": {
+					"details": "Keeps in-track of the custom NFT contracts created by the events for rewards."
+				},
+				"eventCounter": {
+					"details": "Event ids are assigned by a incremented state variable. "
+				},
+				"factory": {
+					"details": "Address of the Custom NFT Factory."
+				},
+				"feeFactor": {
+					"details": "Method used to calculate the fee When the amount is devided by the fee factor, the quotient will be the fee. example: If the fee is 1%, feeFactor will be 100."
+				},
+				"governer": {
+					"details": "Address of the governer."
+				},
+				"isExpired": {
+					"details": "Keeps intrack of the processed transactions."
+				},
+				"networkAdmins": {
+					"details": "Keeps in-track of the network admins. Description available in the networkAdmin contract description."
+				},
+				"org": {
+					"details": "Address of the oragainzation."
+				},
+				"owners": {
+					"details": "Records the owners of the event."
+				},
+				"publicCollectionAddress": {
+					"details": "Address of the public NFT collection for event Rewards."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"mintCustom(address,uint256)": {
+					"notice": "DeclarationError: Identifier already declared."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Administration.sol": "Administration"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Administration.sol": {
+			"keccak256": "0xf0f55eaadb8ce7245313611b8c5d0ce0274e7995116c1265eff1adb0b957ff69",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://835a38c3bb659c96436026f027de90bdb441023960da12c438b86614af1638aa",
+				"dweb:/ipfs/QmZ6VtSQP8sKDL2XZL8oYN72qnkP7QhTDSWcAG1WXwSxDj"
+			]
+		},
+		"NetworkAdmin.sol": {
+			"keccak256": "0x0ae2123e5fc70dff5857b8ba0fcdbcc899ab675ec484f7a652c0010a1c98268b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a8e60a96e854fe1b972a903748075ce5d137f5a7cfca5bb92446d42e6160590d",
+				"dweb:/ipfs/QmTfZ2uQdyNFQ3KKpa32s2JmzgrtmVyGhhGgK3HyKS1GgB"
+			]
+		},
+		"interfaces/IERC20.sol": {
+			"keccak256": "0x79712dcb4946b6b6d7ae6186dc5b9ff8bfb8efc0671d742b0b67fe0a975e3376",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f1211dd623774c0d16a4199b873a005a72f37ae6a8439a3745339c50a3be9e6b",
+				"dweb:/ipfs/QmbYGbvqEvQQKnxCEeGcWBuqrXzDoCKS1ogmdFXe8knAmR"
+			]
+		},
+		"interfaces/IFactory.sol": {
+			"keccak256": "0x72b56d8549f25c3d2b53477e0d030a3c8f34eac22b88fb32dcb5d7f2775dff1d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://96b6c6e9d486dc43cd9ce9b65220df360c16b22266b34d2c984d3223d02d82a3",
+				"dweb:/ipfs/QmRvvEm31ZPcBmsynf3b3ZcbC1KA9rRsRS64H4ox7DuAW2"
+			]
+		},
+		"interfaces/IRewardNFT.sol": {
+			"keccak256": "0x7b81e1b06eef6ec53bb05a11b2492213c3aea240665c17b1f5b3d93f14e3fdc0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2c9be31a76e897b08956d1dd11b6a44de6f5d92748095192fae913b5169a4c7a",
+				"dweb:/ipfs/QmXvkW4pXPaHe6X4kius914m9qHN8s4C8VvcotYiTgWZrf"
+			]
+		},
+		"interfaces/ISzeetaEventRewards.sol": {
+			"keccak256": "0x87e8c1ae5b2e5bcce27ab66f3aa900183f76ce9cd898d34e0a7a494127b2ad0f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f7b899a845e1ee46d03c579d00ed3e5fbea99de6d4cc87936aed2151c754242c",
+				"dweb:/ipfs/QmX9shScwTST1KwHXyjdeNtyCJz6H7tnLJPyBQdpMYPZqC"
+			]
+		},
+		"openzeppalin-utils/ECDSA.sol": {
+			"keccak256": "0x70baefdda9b11b1b7a0f166d98ed1f80307a4140d259c6ef4ac58ac70cd21ed1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5824e122b22e8d2c25c2e0b3f52c2235456cd00f4c2fbc1d429d0ef97ed62ab4",
+				"dweb:/ipfs/QmNPBDvBA8qETGFtTbcvvGH5bm2Hen6YxKX8CTUshAgs8E"
+			]
+		},
+		"openzeppalin-utils/EIP712.sol": {
+			"keccak256": "0x852987c093178595e02298b72a5f3c09aee541604b9e24a3a550bc63d92f3a22",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9b51f6bbe233c5ad5aa9dd2d09e1dc2f7e5b7a8007ad6d0a1c4cdd8e913d157",
+				"dweb:/ipfs/QmNZz3XegYagUgKBPBNeMuPZQNwmYd6j7GbwTFU1T6ZsD2"
+			]
+		}
+	},
+	"version": 1
+}

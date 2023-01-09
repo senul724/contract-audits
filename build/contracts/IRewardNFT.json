@@ -1,0 +1,283 @@
+{
+  "contractName": "IRewardNFT",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "close",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "contributor",
+          "type": "address"
+        }
+      ],
+      "name": "mint",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"close\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"contributor\",\"type\":\"address\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IRewardNFT.sol\":\"IRewardNFT\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IRewardNFT.sol\":{\"keccak256\":\"0x9933ced5087964bc3ee1844b2ea2959130ce15e973f38e3bb8a289597b7428c1\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0d7a62602cebe26fb5718bdcbde37f4436bd0a2cdbe8e641e2ee46ab425ea14a\",\"dweb:/ipfs/QmPCksrL2Gnjb3ynHxfgj9gEFCx4jVUjTTwNfEUMSqnssV\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface IRewardNFT{\n    function close() external;\n    function mint(address contributor) external returns(uint256);\n    function transferOwnership(address newOwner) external;\n}\n",
+  "sourcePath": "/home/humbler/projects/szeeta/szeeta-contract-audits/contracts/interfaces/IRewardNFT.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IRewardNFT.sol",
+    "exportedSymbols": {
+      "IRewardNFT": [
+        10798
+      ]
+    },
+    "id": 10799,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10782,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:59"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IRewardNFT",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 10798,
+        "linearizedBaseContracts": [
+          10798
+        ],
+        "name": "IRewardNFT",
+        "nameLocation": "67:10:59",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "43d726d6",
+            "id": 10785,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "close",
+            "nameLocation": "92:5:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10783,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "97:2:59"
+            },
+            "returnParameters": {
+              "id": 10784,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "108:0:59"
+            },
+            "scope": 10798,
+            "src": "83:26:59",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "6a627842",
+            "id": 10792,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "123:4:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10788,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10787,
+                  "mutability": "mutable",
+                  "name": "contributor",
+                  "nameLocation": "136:11:59",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10792,
+                  "src": "128:19:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10786,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "128:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "127:21:59"
+            },
+            "returnParameters": {
+              "id": 10791,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10790,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10792,
+                  "src": "166:7:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10789,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "166:7:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "165:9:59"
+            },
+            "scope": 10798,
+            "src": "114:61:59",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "f2fde38b",
+            "id": 10797,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "transferOwnership",
+            "nameLocation": "189:17:59",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10795,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10794,
+                  "mutability": "mutable",
+                  "name": "newOwner",
+                  "nameLocation": "215:8:59",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10797,
+                  "src": "207:16:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10793,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "207:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "206:18:59"
+            },
+            "returnParameters": {
+              "id": 10796,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "233:0:59"
+            },
+            "scope": 10798,
+            "src": "180:54:59",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10799,
+        "src": "57:179:59",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:205:59"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.16+commit.07a7930e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2023-01-09T05:33:44.686Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

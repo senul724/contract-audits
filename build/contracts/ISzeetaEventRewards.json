@@ -1,0 +1,312 @@
+{
+  "contractName": "ISzeetaEventRewards",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "contributor",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "eventId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "metadataUri",
+          "type": "string"
+        }
+      ],
+      "name": "addEventUri",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"metadataUri\",\"type\":\"string\"}],\"name\":\"addEventUri\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"contributor\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"eventId\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/ISzeetaEventRewards.sol\":\"ISzeetaEventRewards\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/ISzeetaEventRewards.sol\":{\"keccak256\":\"0x148b53d5a2422e76169cf059155223182e72f95a8392d4e91cc5820917abc9a0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0d4269bf9a3002d9631530c07727a9eb2094b5f8b9fa87a6497a8c49a537a13d\",\"dweb:/ipfs/QmZhFUqedwXZpSHZKbZwyzykCdnAnaaJC7cmFf9RQ1YqZe\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface ISzeetaEventRewards{\n    function mint(address contributor, uint eventId) external returns(uint256); \n    function addEventUri(uint eventId, string memory metadataUri) external;\n}\n",
+  "sourcePath": "/home/humbler/projects/szeeta/szeeta-contract-audits/contracts/interfaces/ISzeetaEventRewards.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/ISzeetaEventRewards.sol",
+    "exportedSymbols": {
+      "ISzeetaEventRewards": [
+        10817
+      ]
+    },
+    "id": 10818,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10800,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:60"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "ISzeetaEventRewards",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 10817,
+        "linearizedBaseContracts": [
+          10817
+        ],
+        "name": "ISzeetaEventRewards",
+        "nameLocation": "67:19:60",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "40c10f19",
+            "id": 10809,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "101:4:60",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10805,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10802,
+                  "mutability": "mutable",
+                  "name": "contributor",
+                  "nameLocation": "114:11:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "106:19:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10801,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "106:7:60",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10804,
+                  "mutability": "mutable",
+                  "name": "eventId",
+                  "nameLocation": "132:7:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "127:12:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10803,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:4:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "105:35:60"
+            },
+            "returnParameters": {
+              "id": 10808,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10807,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10809,
+                  "src": "158:7:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10806,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "158:7:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "157:9:60"
+            },
+            "scope": 10817,
+            "src": "92:75:60",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "a5d831db",
+            "id": 10816,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addEventUri",
+            "nameLocation": "182:11:60",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10814,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10811,
+                  "mutability": "mutable",
+                  "name": "eventId",
+                  "nameLocation": "199:7:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10816,
+                  "src": "194:12:60",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 10810,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "194:4:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10813,
+                  "mutability": "mutable",
+                  "name": "metadataUri",
+                  "nameLocation": "222:11:60",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10816,
+                  "src": "208:25:60",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 10812,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "208:6:60",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "193:41:60"
+            },
+            "returnParameters": {
+              "id": 10815,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "243:0:60"
+            },
+            "scope": 10817,
+            "src": "173:71:60",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10818,
+        "src": "57:189:60",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:215:60"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.16+commit.07a7930e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2023-01-09T05:33:44.695Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

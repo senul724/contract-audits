@@ -1,0 +1,277 @@
+{
+  "contractName": "IFactory",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "eventOwner",
+          "type": "address"
+        },
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "internalType": "string",
+          "name": "uri",
+          "type": "string"
+        }
+      ],
+      "name": "mintCollection",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.16+commit.07a7930e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"eventOwner\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"symbol\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"uri\",\"type\":\"string\"}],\"name\":\"mintCollection\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IFactory.sol\":\"IFactory\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IFactory.sol\":{\"keccak256\":\"0x31dc600fc9f6735546d42b3b8aff2af9e9da5fc62ba2cec2f9ea0e4cf903823c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://50947fb075b754bb8e164a43b16d3839c8bea9d8b4ad07c61c842323ce4a0805\",\"dweb:/ipfs/Qmf2ddviheNVi1YVN5awYYhP3AdyNmQ9vbAqCkrqYH6EYu\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.0;\n\ninterface IFactory{\n    function mintCollection( address eventOwner, string memory name, string memory symbol, string memory uri) external returns(address);\n}\n",
+  "sourcePath": "/home/humbler/projects/szeeta/szeeta-contract-audits/contracts/interfaces/IFactory.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IFactory.sol",
+    "exportedSymbols": {
+      "IFactory": [
+        10780
+      ]
+    },
+    "id": 10781,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10766,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:23:58"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IFactory",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 10780,
+        "linearizedBaseContracts": [
+          10780
+        ],
+        "name": "IFactory",
+        "nameLocation": "67:8:58",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "9f72a155",
+            "id": 10779,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mintCollection",
+            "nameLocation": "90:14:58",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10775,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10768,
+                  "mutability": "mutable",
+                  "name": "eventOwner",
+                  "nameLocation": "114:10:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10779,
+                  "src": "106:18:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10767,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "106:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10770,
+                  "mutability": "mutable",
+                  "name": "name",
+                  "nameLocation": "140:4:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10779,
+                  "src": "126:18:58",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 10769,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "126:6:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10772,
+                  "mutability": "mutable",
+                  "name": "symbol",
+                  "nameLocation": "160:6:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10779,
+                  "src": "146:20:58",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 10771,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "146:6:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 10774,
+                  "mutability": "mutable",
+                  "name": "uri",
+                  "nameLocation": "182:3:58",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10779,
+                  "src": "168:17:58",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 10773,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:6:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "104:82:58"
+            },
+            "returnParameters": {
+              "id": 10778,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10777,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10779,
+                  "src": "204:7:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10776,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "204:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "203:9:58"
+            },
+            "scope": 10780,
+            "src": "81:132:58",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 10781,
+        "src": "57:158:58",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:184:58"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.16+commit.07a7930e.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2023-01-09T05:33:44.677Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
