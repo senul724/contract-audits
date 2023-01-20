@@ -46,6 +46,8 @@ contract Examiner is EIP712{
      */
     uint256 public feeFactor;
 
+    bool private locked;
+
     // Structs
 
     /**
@@ -106,6 +108,13 @@ contract Examiner is EIP712{
     modifier onlyGoverner(){
         require(msg.sender == governer, "Unauthorized Call!");
         _;
+    }
+
+    modifier nonReentrancy() {
+        require(!locked, "No re-entrancy");
+        locked = true;
+        _;
+        locked = false;
     }
 
     constructor(uint fee, address org_, address governer_) EIP712('szeeta', '0.0.1'){
@@ -173,6 +182,7 @@ contract Examiner is EIP712{
     )
          external
          payable
+         nonReentrancy
     {
         require(validateSignature(eventId, amountInUsd, receiver, time, signature) && msg.sender == tx.origin);
         uint amount = msg.value;
