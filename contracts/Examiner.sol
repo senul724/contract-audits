@@ -46,7 +46,8 @@ contract Examiner is EIP712{
      */
     uint256 public feeFactor;
 
-    bool private locked;
+    // Keeps in track of the processed transaction count
+    uint256 private transactionCount;
 
     // Structs
 
@@ -60,7 +61,7 @@ contract Examiner is EIP712{
         uint256 usdAmount;
         address token;
         address receiver;
-        uint256 time;
+        uint256 nonce;
     }
 
     /**
@@ -71,7 +72,7 @@ contract Examiner is EIP712{
         uint256 eventId;
         uint256 usdAmount;
         address receiver;
-        uint256 time;
+        uint256 nonce;
     }
 
     /**
@@ -79,12 +80,12 @@ contract Examiner is EIP712{
      */
     bytes32 private constant tokenTypeHash =
         keccak256(
-            'Token(uint256 eventId,uint256 amount,uint256 usdAmount,address token,address receiver,uint256 time)'
+            'Token(uint256 eventId,uint256 amount,uint256 usdAmount,address token,address receiver,uint256 nonce)'
         );
 
     bytes32 private constant nativeTypeHash =
         keccak256(
-            'Native(uint256 eventId,uint256 usdAmount,address receiver,uint256 time)'
+            'Native(uint256 eventId,uint256 usdAmount,address receiver,uint256 nonce)'
         );  
 
     //events
@@ -110,17 +111,11 @@ contract Examiner is EIP712{
         _;
     }
 
-    modifier nonReentrancy() {
-        require(!locked, "No re-entrancy");
-        locked = true;
-        _;
-        locked = false;
-    }
-
     constructor(uint fee, address org_, address governer_) EIP712('szeeta', '0.0.1'){
         feeFactor = fee;
         org = org_;
         governer = governer_;
+        transactionCount = 1;
     }
 
     // public functions
@@ -149,13 +144,15 @@ contract Examiner is EIP712{
         uint256 amountInUsd, 
         address token,
         address receiver,
-        uint256 time,
+        uint256 nonce,
         bytes calldata signature
     )
         external
         payable
     {
-        require(validataSignatureForTokens(eventId, amount, amountInUsd, token, receiver, time, signature));
+        require(validataSignatureForTokens(eventId, amount, amountInUsd, token, receiver, nonce, signature));
+        //incrementing the transaction count to mark as processed
+        transactionCount ++;
         // calculating the fee
         uint256 fee = amount / feeFactor;
         transferTokenFunds(amount - fee, msg.sender, receiver, token);
@@ -177,14 +174,15 @@ contract Examiner is EIP712{
         uint256 eventId,
         uint256 amountInUsd,
         address receiver,
-        uint256 time,
+        uint256 nonce,
         bytes calldata signature
     )
          external
          payable
-         nonReentrancy
     {
-        require(validateSignature(eventId, amountInUsd, receiver, time, signature) && msg.sender == tx.origin);
+        require(validateSignature(eventId, amountInUsd, receiver, nonce, signature) && msg.sender == tx.origin);
+        //incrementing the transaction count to mark as processed
+        transactionCount ++;
         uint amount = msg.value;
         uint256 fee = amount / feeFactor;
         transferNativeFunds(amount - fee, receiver);
@@ -226,15 +224,8 @@ contract Examiner is EIP712{
     /**
      * @dev About the transactions validations
      *
-     * We use time to expire transactions other than managing a nonce.
-     * The main reason for this is the lower the gas fee of the user because it takes about
-     * 20k gas to update a bolean state of a nonce.
-     * Since are main goal is to compete with normal gas fee for a transactions (approximately 21k gas)
-     * we are using time for validation.
-     *
-     * How we do that is we take the block timestamp when the user sends out the transaction and add a
-     * reasonable time considering the average mining time of a block of the specific network and set it
-     * as the expiration time.
+     * We use transaction count as a nonce to avoid re-entrancy or replaying.
+     * And a organizational signed EIP712 signature is used to avoid thirdparty method calls.
      */
 
     /**
@@ -246,17 +237,17 @@ contract Examiner is EIP712{
         uint256 amountInUsd, 
         address token,
         address receiver,
-        uint256 time,
+        uint256 nonce,
         bytes calldata signature
     )
         internal 
         view 
         returns(bool)
     {
-        require(block.timestamp < time, "Transaction expired");
+        require(nonce == transactionCount, "Transaction expired");
         bytes32 typedDataHash = _hashTypedDataV4(
             keccak256(
-                abi.encode(tokenTypeHash, eventId, amount, amountInUsd, token, receiver, time)
+                abi.encode(tokenTypeHash, eventId, amount, amountInUsd, token, receiver, nonce)
             )
         );
         return org == ECDSA.recover(typedDataHash, signature);
@@ -269,17 +260,17 @@ contract Examiner is EIP712{
         uint256 eventId, 
         uint256 amountInUsd, 
         address receiver,
-        uint256 time,
+        uint256 nonce,
         bytes calldata signature
     )
         internal 
         view 
         returns(bool)
     {
-        require(block.timestamp < time, "Transaction expired");
+        require(nonce == transactionCount, "Transaction expired");
         bytes32 typedDataHash = _hashTypedDataV4(
             keccak256(
-                abi.encode(nativeTypeHash, eventId, amountInUsd, receiver, time)
+                abi.encode(nativeTypeHash, eventId, amountInUsd, receiver, nonce)
             )
         );
         return org == ECDSA.recover(typedDataHash, signature);
@@ -310,15 +301,5 @@ contract Examiner is EIP712{
      */
     function changeGoverner(address newGoverner) external onlyGoverner{
         governer = newGoverner;
-    }
-
-    // utils
-
-    /**
-     * @dev simple function to get block timestamp.
-     * Timestamps are used to validate transactions as mentioned above 
-     */
-    function getTime() external view returns(uint256){
-        return block.timestamp;
     }
 }
