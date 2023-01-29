@@ -70,6 +70,7 @@ contract Examiner is EIP712{
      */
     struct Native{
         uint256 eventId;
+        uint256 amount;
         uint256 usdAmount;
         address receiver;
         uint256 nonce;
@@ -85,7 +86,7 @@ contract Examiner is EIP712{
 
     bytes32 private constant nativeTypeHash =
         keccak256(
-            'Native(uint256 eventId,uint256 usdAmount,address receiver,uint256 nonce)'
+            'Native(uint256 eventId,uint256 amount,uint256 usdAmount,address receiver,uint256 nonce)'
         );  
 
     //events
@@ -150,7 +151,9 @@ contract Examiner is EIP712{
         external
         payable
     {
-        require(validataSignatureForTokens(eventId, amount, amountInUsd, token, receiver, nonce, signature));
+        require(
+            validataSignatureForTokens(eventId, amount, amountInUsd, token, receiver, nonce, signature)
+        );
         //incrementing the transaction count to mark as processed
         transactionCount = nonce + 1;
         // calculating the fee
@@ -172,6 +175,7 @@ contract Examiner is EIP712{
      */
     function contribute(
         uint256 eventId,
+        uint256 amount,
         uint256 amountInUsd,
         address receiver,
         uint256 nonce,
@@ -180,10 +184,12 @@ contract Examiner is EIP712{
          external
          payable
     {
-        require(validateSignature(eventId, amountInUsd, receiver, nonce, signature) && msg.sender == tx.origin);
+        require(
+            msg.value == amount &&
+            validateSignature(eventId, amount, amountInUsd, receiver, nonce, signature)
+        );
         //incrementing the transaction count to mark as processed
         transactionCount = nonce + 1;
-        uint amount = msg.value;
         uint256 fee = amount / feeFactor;
         transferNativeFunds(amount - fee, receiver);
         emit NativeContribution(
@@ -258,6 +264,7 @@ contract Examiner is EIP712{
      */
     function validateSignature(
         uint256 eventId, 
+        uint256 amount,
         uint256 amountInUsd, 
         address receiver,
         uint256 nonce,
@@ -270,7 +277,7 @@ contract Examiner is EIP712{
         require(nonce >= transactionCount, "Transaction expired");
         bytes32 typedDataHash = _hashTypedDataV4(
             keccak256(
-                abi.encode(nativeTypeHash, eventId, amountInUsd, receiver, nonce)
+                abi.encode(nativeTypeHash, eventId, amount, amountInUsd, receiver, nonce)
             )
         );
         return org == ECDSA.recover(typedDataHash, signature);
